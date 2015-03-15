@@ -1,0 +1,29 @@
+/**************************************************/
+/* MISCELLANEOUS
+/**************************************************/
+
+@mixin ratio($val, $element: div) {
+    position: relative;
+
+    > #{$element} {
+        @include position(absolute, 0);
+    }
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: $val;
+    }
+}
+
+@mixin hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@mixin visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}

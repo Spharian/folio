@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{charset: 'UTF-8'}
+    %title Ketfi Kevin | Portfolio
+    %link{href: 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700', rel: 'stylesheet'}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
+    %meta{name: 'description', content: '3D Modeling / Graphics Design / Digital Art / Digital Painting / Cinema 4D / 3ds Max'}
+    %meta{name: 'keywords', content: 'kevin ketfi,portfolio,folio,3d 2d artist,concept,game,modeling,graphics design,digital painting,cinema 4d'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no'}
+    
+    %meta{property: 'og:site_name', content: 'Ketfi Kevin | Portfolio'}
+    %meta{property: 'og:title', content: 'Ketfi Kevin | Portfolio'}
+    %meta{property: 'og:url', content: 'http://ketfikevin.fr'}
+    %meta{property: 'og:type', content: 'website'}
+    %meta{property: 'og:image', content: 'http://ketfikevin.fr/img/ketfi-kevin-share.png'}
+
+    = favicon_link_tag 'favicon.png'
+    = csrf_meta_tags
+  %body
+    %header#header.container
+      %button.filter-button
+        - 8.times do
+          %i
+
+      %h1.logo
+        = link_to 'Portfolio Ketfi Kevin', '/'
+
+      %ul.contact-infos-list
+        %li.contact-infos-list-item
+          %a.cv-link{href: '#'} CV
+        %li.contact-infos-list-item
+          %a{href: 'mailto:ketfikevin@gmail.com'} ketfikevin@gmail.com
+
+    %main#content
+      .filter.container
+        %ul.filter-list
+          %li.filter-list-item
+            %a.selected{href: '#', 'data-filter': '*'} All
+          %li.filter-list-item
+            %a{href: '#', 'data-filter': '.3d'} 3D
+          %li.filter-list-item
+            %a{href: '#', 'data-filter': '.2d'} 2D
+          %li.filter-list-item
+            %a{href: '#', 'data-filter': '.game-art'} Game Art
+
+    = yield
+    
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
