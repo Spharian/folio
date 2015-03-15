@@ -1,0 +1,6 @@
+%li.3d.projects-list-item
+  %a.projects-list-link{href: '#'}
+    .project-picture-container
+      .project-picture{style: "background-image: url(#{project.featured_image.url})"}
+      %h3.hover-title= project.title
+      %p.hover-tags= project.description
