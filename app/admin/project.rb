@@ -1,8 +1,21 @@
 ActiveAdmin.register Project do
-  permit_params :title, :description, :text, :category, :featured_image, pictures_attributes: [:id, :project_id, :image, :position, :_destroy]
+  menu priority: 1
 
+  # Options
+  config.filters = false
+  config.sort_order = 'position_asc'
+
+  # Accessible parameters
+  permit_params :title, :description, :text, :category, :featured_image, :position,
+                        pictures_attributes: [:id, :project_id, :image, :position, :_destroy]
+
+  # Disable show action
   actions :all, except: :show
 
+  # Make the index page resources dragable
+  sortable
+
+  # Index view
   index do
     selectable_column
     column :title
@@ -11,6 +24,7 @@ ActiveAdmin.register Project do
       object.featured_image_file_name
     end
     actions
+    sortable_handle_column
   end
 
   form do |f|
@@ -24,11 +38,11 @@ ActiveAdmin.register Project do
       f.input :featured_image, as: :file, hint: hint, required: true
     end
 
-    # Add pictures dynamically
+    # Add nested pictures dynamically
     f.inputs 'Pictures' do
       f.has_many :pictures, heading: false, allow_destroy: true, sortable: :position do |picture|
-        # hint = f.image_tag(picture.object.image.url, width: 300) unless picture.object.new_record? || picture.object.image.nil?
-        picture.input :image, as: :file
+        hint = f.image_tag(picture.object.image.url, width: 150) unless picture.object.new_record? || picture.object.image.nil?
+        picture.input :image, as: :file, hint: hint
       end
     end
 

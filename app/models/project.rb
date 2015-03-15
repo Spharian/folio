@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   # Validation
-  validates :title, presence: true, length: { minimum: 3 }
+  validates :title, presence: true
   validates :description, presence: true
 
   # Relations
@@ -10,4 +10,6 @@ class Project < ActiveRecord::Base
   # Paperclip
   has_attached_file :featured_image
   validates_attachment :featured_image, presence: true, content_type: { content_type: /\Aimage/ }
+
+  acts_as_list
 end

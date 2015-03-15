@@ -14,6 +14,8 @@ gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'bourbon'
 gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin-sortable'
+gem 'acts_as_list'
 gem 'paperclip', '~> 4.2'
 
 # Use ActiveModel has_secure_password
