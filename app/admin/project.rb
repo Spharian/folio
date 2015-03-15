@@ -6,7 +6,7 @@ ActiveAdmin.register Project do
   config.sort_order = 'position_asc'
 
   # Accessible parameters
-  permit_params :title, :description, :text, :category, :featured_image, :position,
+  permit_params :title, :description, :text, :category_id, :featured_image, :position,
                         pictures_attributes: [:id, :project_id, :image, :position, :_destroy]
 
   # Disable show action
@@ -20,6 +20,9 @@ ActiveAdmin.register Project do
     selectable_column
     column :title
     column :description
+    column :category do |object|
+      object.category.name
+    end
     column :featured_image do |object|
       object.featured_image_file_name
     end
@@ -27,10 +30,12 @@ ActiveAdmin.register Project do
     sortable_handle_column
   end
 
+  # Form actions
   form do |f|
     f.inputs 'Project Details' do
       f.input :title
       f.input :description
+      f.input :category, include_blank: false
       f.input :text
 
       # Preview image

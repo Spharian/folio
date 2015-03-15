@@ -2,9 +2,11 @@ class Project < ActiveRecord::Base
   # Validation
   validates :title, presence: true
   validates :description, presence: true
+  validates :category_id, presence: true
 
   # Relations
   has_many :pictures, dependent: :destroy
+  belongs_to :category
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
   # Paperclip

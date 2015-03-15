@@ -38,12 +38,9 @@
         %ul.filter-list
           %li.filter-list-item
             %a.selected{href: '#', 'data-filter': '*'} All
-          %li.filter-list-item
-            %a{href: '#', 'data-filter': '.3d'} 3D
-          %li.filter-list-item
-            %a{href: '#', 'data-filter': '.2d'} 2D
-          %li.filter-list-item
-            %a{href: '#', 'data-filter': '.game-art'} Game Art
+          - @categories.each do |category|
+            %li.filter-list-item
+              %a{href: '#', 'data-filter': '.' + tagify(category.name)}= category.name
 
     = yield
     

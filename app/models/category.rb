@@ -1,4 +1,3 @@
 class Category < ActiveRecord::Base
-  # Relations
-  has_many :projects
+  acts_as_list
 end

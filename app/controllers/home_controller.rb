@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @projects = Project.order(:position)
+    @projects = Project.includes(:category).order(:position)
+    @categories = Category.order(:position)
   end
 end
