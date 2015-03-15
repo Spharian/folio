@@ -1,0 +1,297 @@
+/**************************************************/
+/* GENERAL
+/**************************************************/
+
+body {
+    color: #545454;
+    font-family: "Droid Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    padding: 0 30px;
+}
+
+#content {
+    padding-top: $headerHeight;
+}
+
+
+
+
+/**************************************************/
+/* HEADER
+/**************************************************/
+
+#header {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    height: $headerHeight;
+    z-index: 100;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+
+.filter-button {
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -7px;
+    padding-left: 4px;
+    @include position(absolute, 50% null null null);
+
+    i {
+        background: #bbb;
+        float: left;
+        width: 4px;
+        height: 4px;
+        margin: 2px;
+        @include transition(background .13s ease-in-out);
+
+        &:nth-child(4),
+        &:nth-child(7) {
+            clear: both;
+        }
+
+        .opened-filter & {
+            background: #000;
+        }
+    }
+}
+
+.logo {
+    width: 43px;
+    height: 30px;
+    margin: -15px 0 0 -21px;
+    @include position(absolute, 50% null null 50%);
+
+    a {
+        background: image-url("ketfi-kevin-logo.svg");
+        background-size: cover;
+        display: block;
+        height: 100%;
+        text-indent: -9999px;
+    }
+}
+
+.contact-infos-list {
+    float: right;
+    height: 100%;
+    @include display(flex);
+    @include align-items(center);
+}
+
+.contact-infos-list-item {
+    &:not(:last-child) {
+        margin-right: 60px;
+    }
+
+    a {
+        color: #767676;
+        font-size: 12px;
+        position: relative;
+        @include transition(color .2s ease-in-out);
+
+        // Underline
+        &:after {
+            content: "";
+            background: #e2e2e2;
+            height: 2px;
+            @include hidden;
+            @include position(absolute, null 0 -5px 0);
+            @include transform(scaleY(0) translateY(2px));
+            @include transition(all .2s ease-in-out);
+        }
+
+        &:hover {
+            color: #343434;
+
+            &:after {
+                @include visible;
+                @include transform(none);
+            }
+        }
+    }
+}
+
+.cv-link {
+    position: relative;
+
+    // Download arrow
+    &:before {
+        content: "";
+        background: image-url("download-arrow.svg");
+        background-size: cover;
+        width: 9px;
+        height: 10px;
+        margin-top: -5px;
+        @include hidden;
+        @include position(absolute, 50% null null -13px);
+        @include transform(translate3d(0,-2px,0));
+        @include transition(all .2s ease-in-out);
+    }
+
+    &:hover {
+        &:before {
+            @include visible;
+            @include transform(none);
+        }
+    }
+}
+
+
+
+
+/**************************************************/
+/* PROJECTS FILTER
+/**************************************************/
+
+.filter {
+    background: #f6f8fa;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    will-change: height;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    @include transition(all .2s $ease-out-quad);
+
+    .opened-filter & {
+        height: $headerHeight;
+    }
+}
+
+.filter-list {
+    height: $headerHeight;
+    @include display(flex);
+    @include align-items(center);
+}
+
+.filter-list-item {
+    &:not(:last-child) {
+        margin-right: 35px;
+    }
+
+    &:first-child {
+        margin-left: -10px;
+    }
+
+    a {
+        color: #9ca3aa;
+        padding: 10px;
+        @include user-select(none);
+
+        &.selected {
+            color: #000;
+        }
+    }
+}
+
+
+
+
+/**************************************************/
+/* PROJECTS LIST
+/**************************************************/
+
+.no-project {
+    color: #767676;
+    margin-top: 30px;
+}
+
+.projects-list {
+    @include transition(all .2s $ease-out-quad);
+
+     .opened-filter & {
+        @include transform(translateZ(0));
+    }
+}
+
+.project-picture-container {
+    color: #fff;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+}
+
+.projects-list-link {
+    display: block;
+    overflow: hidden;
+    @include ratio(68%);
+
+    &:hover {
+        .project-picture:before,
+        .hover-title,
+        .hover-tags {
+            @include visible;
+            @include transform(translateZ(0));
+        }
+
+        .project-picture {
+            @include transform(scale(1.04));
+        }
+
+        // Separation line
+        .hover-title:after {
+            @include transform(translateZ(0));
+        }
+    }
+}
+
+.project-picture {
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include position(absolute, 0);
+    @include transition(all .3s $ease-out-quad);
+
+    // Overlay
+    &:before {
+        content: "";
+        background: rgba(0,0,0,.6);
+        @include transition(all .2s ease-in-out);
+        @include hidden;
+        @include position(absolute, 0);
+    }
+}
+
+.projects-list-item {
+    width: 25%;
+}
+
+.hover-title,
+.hover-tags {
+    @include hidden;
+}
+
+.hover-title {
+    font-size: 17px;
+    margin-bottom: 24px;
+    position: relative;
+    @include transition(all .2s ease-in-out);
+    @include transform(translate3d(0,10px,0));
+
+    // Separation line
+    &:after {
+        content: "";
+        background: #fff;
+        width: 30px;
+        height: 1px;
+        margin-left: -15px;
+        @include transform(scaleX(0));
+        @include transition(all .2s ease-in-out);
+        @include position(absolute, null null -11px 50%);
+    }
+}
+
+.hover-tags {
+    color: #d2d2d0;
+    font-size: 11px;
+    position: relative;
+    @include transition(all .2s ease-in-out);
+    @include transform(translate3d(0,4px,0));
+}
