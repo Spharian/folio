@@ -2,9 +2,6 @@ class Project < ActiveRecord::Base
   # Default scopes
   default_scope { order('position') }
 
-  # Scopes
-  scope :used_categories, -> { select('category_id').map(&:category_id) }
-  
   # Validation
   validates :title, presence: true
   validates :description, presence: true
