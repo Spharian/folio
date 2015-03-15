@@ -1,7 +1,7 @@
 ActiveAdmin.register Project do
   permit_params :title, :description, :text, :category, :featured_image
 
-  actions :all, :except => [:show]
+  actions :all, except: :show
 
   index do
     selectable_column
@@ -18,8 +18,9 @@ ActiveAdmin.register Project do
       f.input :title
       f.input :description
       f.input :text
-      
-      f.input :featured_image, as: :file, required: true, hint: (image_tag(f.object.featured_image.url(:thumb)) if f.object.featured_image?)
+
+      hint = f.image_tag(f.object.featured_image.url(:thumb)) unless f.object.new_record? || f.object.featured_image.nil?
+      f.input :featured_image, as: :file, hint: hint, required: true
     end
     f.actions
   end
