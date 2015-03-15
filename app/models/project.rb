@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+  # Default scopes
+  default_scope { order('position') }
+  
   # Validation
   validates :title, presence: true
   validates :description, presence: true
