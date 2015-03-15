@@ -52,8 +52,7 @@ ActiveRecord::Schema.define(version: 20150314165940) do
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "project_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "position"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
