@@ -2,12 +2,18 @@
 @import "reset";
 @import "mixins";
 
+
 // Sizes
 $headerHeight: 72px;
 
 
 // General styles
 @import "main";
+@import "projects-filter";
+
+
+// Pages
+@import "pages/home";
 
 
 // Responsive

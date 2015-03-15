@@ -7,3 +7,5 @@
 //= require TweenMax.min
 
 //= require main
+
+//= require modules/projects-filter

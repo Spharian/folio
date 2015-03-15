@@ -1,0 +1,44 @@
+/**************************************************/
+/* PROJECTS FILTER
+/**************************************************/
+
+.filter {
+    background: #f6f8fa;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    will-change: height;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    @include transition(all .2s $ease-out-quad);
+
+    .opened-filter & {
+        height: $headerHeight;
+    }
+}
+
+.filter-list {
+    height: $headerHeight;
+    @include display(flex);
+    @include align-items(center);
+}
+
+.filter-list-item {
+    &:not(:last-child) {
+        margin-right: 35px;
+    }
+
+    &:first-child {
+        margin-left: -10px;
+    }
+
+    a {
+        color: #9ca3aa;
+        padding: 10px;
+        @include user-select(none);
+
+        &.selected {
+            color: #000;
+        }
+    }
+}
