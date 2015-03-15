@@ -12,3 +12,6 @@
 
 # Ignore uploaded images
 /public/system
+
+# Ignore OS X craps
+.DS_Store
