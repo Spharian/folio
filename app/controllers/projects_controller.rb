@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class ProjectsController < ApplicationController
   def index
     @projects = Project.includes(:category)
 
