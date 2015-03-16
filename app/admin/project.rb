@@ -39,14 +39,15 @@ ActiveAdmin.register Project do
       f.input :text
 
       # Preview image
-      hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record? || f.object.featured_image.nil?
+      # hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record? || f.object.featured_image.nil?
+      hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record?
       f.input :featured_image, as: :file, hint: hint, required: true
     end
 
     # Add nested pictures dynamically
     f.inputs 'Pictures' do
       f.has_many :pictures, heading: false, allow_destroy: true, sortable: :position do |picture|
-        hint = f.image_tag(picture.object.image.url, width: 150) unless picture.object.new_record? || picture.object.image.nil?
+        hint = f.image_tag(picture.object.image.url, width: 150) unless picture.object.new_record?
         picture.input :image, as: :file, hint: hint
       end
     end
