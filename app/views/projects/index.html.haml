@@ -1,6 +1,6 @@
 - if @projects.any?
   %ul.projects-list
-    = render partial: 'project', collection: @projects
+    = render @projects
 
 - else
   %p.no-project.container No project yet.
