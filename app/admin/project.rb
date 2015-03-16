@@ -1,21 +1,16 @@
 ActiveAdmin.register Project do
   menu priority: 1
 
-  # Options
   config.filters = false
   config.sort_order = 'position_asc'
 
-  # Accessible parameters
   permit_params :title, :description, :text, :category_id, :featured_image, :position,
                         pictures_attributes: [:id, :project_id, :image, :position, :_destroy]
 
-  # Disable show action
   actions :all, except: :show
 
-  # Make the index page resources dragable
   sortable
 
-  # Index view
   index do
     selectable_column
     column :title
@@ -30,7 +25,6 @@ ActiveAdmin.register Project do
     sortable_handle_column
   end
 
-  # Form actions
   form do |f|
     f.inputs 'Project Details' do
       f.input :title
@@ -39,7 +33,6 @@ ActiveAdmin.register Project do
       f.input :text
 
       # Preview image
-      # hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record? || f.object.featured_image.nil?
       hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record?
       f.input :featured_image, as: :file, hint: hint, required: true
     end
