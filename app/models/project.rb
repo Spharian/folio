@@ -1,4 +1,9 @@
 class Project < ActiveRecord::Base
+  include Hint
+  
+  # Aliases 
+  alias_attribute :image, :featured_image
+
   # Default scopes
   default_scope { order('position') }
 

@@ -31,17 +31,13 @@ ActiveAdmin.register Project do
       f.input :description
       f.input :category, include_blank: false
       f.input :text
-
-      # Preview image
-      hint = f.image_tag(f.object.featured_image.url, width: 300) unless f.object.new_record?
-      f.input :featured_image, as: :file, hint: hint, required: true
+      f.input :featured_image, as: :file, required: true, hint: f.object.generate_hint(300)
     end
 
-    # Add nested pictures dynamically
+    # Add pictures dynamically
     f.inputs 'Pictures' do
       f.has_many :pictures, heading: false, allow_destroy: true, sortable: :position do |picture|
-        hint = f.image_tag(picture.object.image.url, width: 150) unless picture.object.new_record?
-        picture.input :image, as: :file, hint: hint
+        picture.input :image, as: :file, required: true, hint: picture.object.generate_hint(150)
       end
     end
 

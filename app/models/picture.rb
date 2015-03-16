@@ -1,4 +1,6 @@
 class Picture < ActiveRecord::Base
+  include Hint
+
   # Relations
   belongs_to :projects
 
