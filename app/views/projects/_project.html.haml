@@ -1,5 +1,5 @@
-%li.projects-list-item{class: tagify(project.category.name)}
-  %a.projects-list-link{href: '#'}
+%li{class: tagify(project.category.name)}
+  %a{href: '#'}
     .project-picture-container
       .project-picture{style: "background-image: url(#{project.featured_image.url})"}
       %h3.hover-title= project.title

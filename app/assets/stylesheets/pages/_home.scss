@@ -10,7 +10,35 @@
 .projects-list {
     @include transition(all .2s $ease-out-quad);
 
-     .opened-filter & {
+    li {
+        width: 25%;
+    }
+
+    a {
+        display: block;
+        overflow: hidden;
+        @include ratio(68%);
+
+        &:hover {
+            .project-picture:before,
+            .hover-title,
+            .hover-tags {
+                @include visible;
+                @include transform(translateZ(0));
+            }
+
+            .project-picture {
+                @include transform(scale(1.04));
+            }
+
+            // Separation line
+            .hover-title:after {
+                @include transform(translateZ(0));
+            }
+        }
+    }
+
+    .opened-filter & {
         @include transform(translateZ(0));
     }
 }
@@ -21,30 +49,6 @@
     @include align-items(center);
     @include justify-content(center);
     @include flex-direction(column);
-}
-
-.projects-list-link {
-    display: block;
-    overflow: hidden;
-    @include ratio(68%);
-
-    &:hover {
-        .project-picture:before,
-        .hover-title,
-        .hover-tags {
-            @include visible;
-            @include transform(translateZ(0));
-        }
-
-        .project-picture {
-            @include transform(scale(1.04));
-        }
-
-        // Separation line
-        .hover-title:after {
-            @include transform(translateZ(0));
-        }
-    }
 }
 
 .project-picture {
@@ -61,10 +65,6 @@
         @include hidden;
         @include position(absolute, 0);
     }
-}
-
-.projects-list-item {
-    width: 25%;
 }
 
 .hover-title,

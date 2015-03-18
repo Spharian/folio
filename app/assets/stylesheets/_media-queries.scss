@@ -3,14 +3,14 @@
 /**************************************************/
 
 @media screen and (max-width: 1480px) {
-    .projects-list-item {
+    .projects-list li {
         width: 33.33334%;
     }
 }
 
 
 @media screen and (max-width: 980px) {
-    .projects-list-item {
+    .projects-list li {
         width: 50%;
     }
 }
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .projects-list-item {
+    .projects-list li {
         width: 100%;
     }
 }

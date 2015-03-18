@@ -1,7 +1,7 @@
-'use strict'
+$filterLink = $('.filter-list a')
 
 $projectsList = $('.projects-list').isotope({
-  itemSelector: '.projects-list-item',
+  itemSelector: '.projects-list li',
   layoutMode: 'fitRows'
 })
 
@@ -10,7 +10,7 @@ $('.filter-button').click ->
   $body.toggleClass('opened-filter')
   TweenMax.to(window, .5, {scrollTo: { y: 0, autoKill: true}}) if $body.hasClass('opened-filter')
 
-$('.filter-list-item a').click (e) ->
+$filterLink.click (e) ->
   e.preventDefault()
   $this = $(this)
 
@@ -19,5 +19,5 @@ $('.filter-list-item a').click (e) ->
   $projectsList.isotope({ filter: filterValue })
 
   # Toggle selected class
-  $('.filter-list-item a').removeClass('selected')
+  $filterLink.removeClass('selected')
   $this.addClass('selected')

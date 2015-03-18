@@ -27,21 +27,21 @@
       %h1.logo
         = link_to 'Portfolio Ketfi Kevin', root_path
 
-      %ul.contact-infos-list
-        %li.contact-infos-list-item
+      %ul.contact-infos
+        %li
           %a.cv-link{href: '#'} CV
-        %li.contact-infos-list-item
+        %li
           %a{href: 'mailto:ketfikevin@gmail.com'} ketfikevin@gmail.com
 
     %main#content
       .filter.container
         %ul.filter-list
-          %li.filter-list-item
+          %li
             %a.selected{href: '#', 'data-filter': '*'} All
           - @categories.each do |category|
-            %li.filter-list-item
+            %li
               %a{href: '#', 'data-filter': '.' + tagify(category.name)}= category.name
 
-    = yield
+      = yield
     
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

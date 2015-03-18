@@ -21,15 +21,15 @@
     height: $headerHeight;
     @include display(flex);
     @include align-items(center);
-}
 
-.filter-list-item {
-    &:not(:last-child) {
-        margin-right: 35px;
-    }
+    li {
+       &:not(:last-child) {
+            margin-right: 35px;
+        }
 
-    &:first-child {
-        margin-left: -10px;
+        &:first-child {
+            margin-left: -10px;
+        }
     }
 
     a {
