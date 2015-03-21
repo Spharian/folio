@@ -15,3 +15,6 @@
 
 # Ignore OS X craps
 .DS_Store
+
+# Ignore db config file
+/config/database.yml
