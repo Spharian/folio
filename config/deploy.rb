@@ -6,7 +6,6 @@ set :repo_url, 'git@github.com:Spharian/folio.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :pty, true
 set :deploy_to, "/var/www/#{fetch(:application)}"
 
 # Default value for :scm is :git
@@ -33,7 +32,7 @@ namespace :deploy do
   desc "Create nginx nginx symlink"
   task :nginx_symlink do
     on roles(:app) do
-      execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
     end
   end
   
