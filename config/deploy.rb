@@ -26,14 +26,6 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 namespace :deploy do
-  # Custom tasks (cap -T)
-  desc "Create nginx symlink"
-  task :nginx_symlink do
-    on roles(:app) do
-      execute "ln -s -f /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
-    end
-  end
-
   desc "Create unicorn init symlink"
   task :unicorn_init_symlink do
     on roles(:app) do
