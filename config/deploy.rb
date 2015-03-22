@@ -2,7 +2,6 @@
 lock '3.4.0'
 
 set :application, 'folio'
-set :pty, true
 set :repo_url, 'git@github.com:Spharian/folio.git'
 
 # Default branch is :master
@@ -29,25 +28,24 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 namespace :deploy do
 
-  # Custom tasks
-  desc "Create nginx nginx symlink"
+  # Custom tasks (cap -T)
+  desc "Create nginx symlink"
   task :nginx_symlink do
     on roles(:app) do
       execute "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
     end
   end
-  
-  # after :finished do
-  #   execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
-  # end
+
+  desc "Create unicorn init symlink"
+  task :unicorn_init_symlink do
+    on roles(:app) do
+      # Make unicorn_init.sh executable
+      execute "chmod +x /var/www/#{fetch(:application)}/current/config/unicorn_init.sh"
+      # Create the symlink
+      execute "ln -s /var/www/#{fetch(:application)}/current/config/unicorn_init.sh /etc/init.d/unicorn-#{fetch(:application)}"
+    end
+  end
 
   after :finished, 'deploy:nginx_symlink'
-  # after :restart, :clear_cache do
-  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-  #     within release_path do
-  #       execute :rake, 'cache:clear'
-  #       execute "service thin restart"
-  #     end
-  #   end
-  # end
+  after :finished, 'deploy:unicorn_init_symlink'
 end
