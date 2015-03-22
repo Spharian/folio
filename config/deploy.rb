@@ -3,7 +3,6 @@ lock '3.4.0'
 
 set :application, 'folio'
 set :repo_url, 'git@github.com:Spharian/folio.git'
-set :rbenv_ruby, '2.2.0'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -30,6 +29,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 
 namespace :deploy do
+  after :finished do
+    execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+  end
   # after :restart, :clear_cache do
   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
   #     within release_path do
