@@ -8,7 +8,7 @@ set :rbenv_ruby, '2.2.0'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :deploy_to, '/var/www/folio'
+set :deploy_to, '/var/www/#{application}'
 
 # Default value for :scm is :git
 # set :scm, :git
