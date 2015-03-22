@@ -32,7 +32,7 @@ namespace :deploy do
   desc "Create nginx symlink"
   task :nginx_symlink do
     on roles(:app) do
-      execute "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute "ln -s -f /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
     end
   end
 
@@ -42,7 +42,7 @@ namespace :deploy do
       # Make unicorn_init.sh executable
       execute "chmod +x /var/www/#{fetch(:application)}/current/config/unicorn_init.sh"
       # Create the symlink
-      execute "ln -s /var/www/#{fetch(:application)}/current/config/unicorn_init.sh /etc/init.d/unicorn-#{fetch(:application)}"
+      execute "ln -s -f /var/www/#{fetch(:application)}/current/config/unicorn_init.sh /etc/init.d/unicorn-#{fetch(:application)}"
     end
   end
 
