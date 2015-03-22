@@ -1,4 +1,4 @@
-%li{class: tagify(project.category.name)}
+%li{class: project.category.name.parameterize}
   %a{href: '#'}
     .project-picture-container
       .project-picture{style: "background-image: url(#{project.featured_image.url})"}

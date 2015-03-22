@@ -40,7 +40,7 @@
             %a.selected{href: '#', 'data-filter': '*'} All
           - @categories.each do |category|
             %li
-              %a{href: '#', 'data-filter': '.' + tagify(category.name)}= category.name
+              %a{href: '#', 'data-filter': '.' + category.name.parameterize}= category.name
 
       = yield
     
