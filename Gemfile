@@ -17,10 +17,13 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-sortable'
 gem 'acts_as_list'
 gem 'paperclip', '~> 4.2'
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'thin'
+gem 'thin', group: :production
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
