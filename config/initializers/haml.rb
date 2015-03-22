@@ -1,6 +1,11 @@
 # Wrap every HTML attributes by double quotes
 Haml::Template.options[:attr_wrapper] = '"'
 
+# Minify HTML in production only
+if Rails.env.production?
+  Haml::Template.options[:remove_whitespace] = true
+end
+
 # Override tag helper from Rails to disable self-closing tags
 module ActionView
   class Base
