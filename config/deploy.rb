@@ -2,7 +2,6 @@
 lock '3.4.0'
 
 set :application, 'folio'
-set :pty, true
 set :repo_url, 'git@github.com:Spharian/folio.git'
 
 # Default branch is :master
@@ -33,7 +32,9 @@ namespace :deploy do
   desc "Create nginx nginx symlink"
   task :nginx_symlink do
     on roles(:app) do
-      execute :sudo, "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      as 'root' do
+        execute, "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      end
     end
   end
   
