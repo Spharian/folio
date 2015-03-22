@@ -27,11 +27,21 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-
 namespace :deploy do
-  after :finished do
-    execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+
+  # Custom tasks
+  desc "Create nginx nginx symlink"
+  task :nginx_symlink do
+    on roles(:app) do
+      execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+    end
   end
+  
+  # after :finished do
+  #   execute "sudo ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+  # end
+
+  after :finished, 'deploy:nginx_symlink'
   # after :restart, :clear_cache do
   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
   #     within release_path do
