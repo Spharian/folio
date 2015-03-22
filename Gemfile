@@ -17,7 +17,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-sortable'
 gem 'acts_as_list'
 gem 'paperclip', '~> 4.2'
-gem 'thin'
+gem 'unicorn'
 
 group :development do
   gem 'capistrano'
