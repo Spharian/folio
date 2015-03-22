@@ -7,7 +7,6 @@ set :repo_url, 'git@github.com:Spharian/folio.git'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :deploy_to, "/var/www/#{fetch(:application)}"
-set :conditionally_migrate, true
 # Default value for :scm is :git
 # set :scm, :git
 
