@@ -33,9 +33,7 @@ namespace :deploy do
   desc "Create nginx nginx symlink"
   task :nginx_symlink do
     on roles(:app) do
-      as 'root' do
-        execute "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
-      end
+      execute "ln -s /var/www/#{fetch(:application)}/current/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
     end
   end
   
