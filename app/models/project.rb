@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   validates :description, presence: true
   validates :category_id, presence: true
 
-  # Relations
+  # Associations
   has_many :pictures, dependent: :destroy
   belongs_to :category
   accepts_nested_attributes_for :pictures, allow_destroy: true

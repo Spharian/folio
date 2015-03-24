@@ -1,3 +1,17 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "activeadmin-sortable";
+
+
+/**************************************************/
+/* MAIN
+/**************************************************/
+
+.col-selectable,
+.activeadmin-sortable {
+  width: 1px;
+}
+
+input {
+  outline: none;
+}

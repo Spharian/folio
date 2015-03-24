@@ -29,7 +29,7 @@ ActiveAdmin.register Project do
     f.inputs 'Project Details' do
       f.input :title
       f.input :description
-      f.input :category, include_blank: false
+      f.input :category, required: true, include_blank: false
       f.input :text
       f.input :featured_image, as: :file, required: true, hint: f.object.generate_hint(300)
     end

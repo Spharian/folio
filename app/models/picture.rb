@@ -1,7 +1,7 @@
 class Picture < ActiveRecord::Base
   include Hint
 
-  # Relations
+  # Associations
   belongs_to :projects
 
   # Paperclip
