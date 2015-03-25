@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
   # Default scopes
   default_scope { order('position') }
 
-  # Validation
+  # Validations
   validates :name, presence: true
 
   # Associations
