@@ -8,7 +8,7 @@ set :repo_url, "git@github.com:Spharian/folio.git"
 set :linked_files, fetch(:linked_files, []).push("config/database.yml", "config/secrets.yml")
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push("log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system")
+set :linked_dirs, fetch(:linked_dirs, []).push("log", "config", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system")
 
 # Which config files should be copied by deploy:setup_config
 set(:config_files, %w(
@@ -47,6 +47,5 @@ namespace :deploy do
 
   # Reload nginx to it will pick up any modified vhosts from
   # setup_config
-  after :finished, "deploy:symlink:shared"
   after :finished, "deploy:setup_config", "nginx:reload"
 end
