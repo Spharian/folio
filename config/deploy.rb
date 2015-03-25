@@ -29,7 +29,7 @@ set(:executable_config_files, %w(
 # init scripts etc. The full_app_name variable isn't
 # available at this point so we use a custom template {{}}
 # tag and then add it at run time.
-set(:symlinks, [
+set :symlinks, fetch(:symlinks, []).push(
   {
     source: "nginx.conf",
     link: "/etc/nginx/sites-enabled/{{full_app_name}}"
@@ -38,7 +38,7 @@ set(:symlinks, [
     source: "unicorn_init.sh",
     link: "/etc/init.d/unicorn_{{full_app_name}}"
   }
-])
+)
 
 namespace :deploy do
   # Remove the default nginx configuration as it will tend
