@@ -3,6 +3,11 @@
 # need to create entries in your local Hosts file for testing.
 set :server_name, "www.ketfikevin.ddns.net ketfikevin.ddns.net"
 
+# Used in case we're deploying multiple versions of the same
+# app side by side. Also provides quick sanity checks when looking
+# at filepaths
+set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
+
 server "92.222.14.113", user: "#{fetch(:deploy_user)}", roles: %w{app web db}
 
 set :deploy_to, "/var/www/#{fetch(:application)}"
