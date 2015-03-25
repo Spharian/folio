@@ -43,9 +43,9 @@ set(:symlinks, [
 namespace :deploy do
   # Remove the default nginx configuration as it will tend
   # to conflict with our configs.
-  before "deploy:setup_config", "nginx:remove_default_vhost"
+  before :starting, "deploy:setup_config", "nginx:remove_default_vhost"
 
   # Reload nginx to it will pick up any modified vhosts from
   # setup_config
-  after "deploy:setup_config", "nginx:reload"
+  after :finished, "deploy:setup_config", "nginx:reload"
 end
