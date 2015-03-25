@@ -10,11 +10,9 @@
 # ones to be over-ridden
 # if the target file name is the same as the source then
 # the second parameter can be left out
-
 def smart_template(from, to=nil)
   to ||= from
-  # full_to_path = "#{shared_path}/config/#{to}"
-  full_to_path = "#{deploy_to}/config/#{to}"
+  full_to_path = "#{shared_path}/config/#{to}"
   if from_erb_path = template_file(from)
     from_erb = StringIO.new(ERB.new(File.read(from_erb_path)).result(binding))
     upload! from_erb, full_to_path
@@ -25,12 +23,9 @@ def smart_template(from, to=nil)
 end
 
 def template_file(name)
-  # if File.exist?((file = "config/deploy/#{fetch(:full_app_name)}/#{name}.erb"))
-  #   return file
-  # elsif File.exist?((file = "config/deploy/shared/#{name}.erb"))
-  #   return file
-  # end
-  if File.exist?((file = "config/deploy/shared/#{name}.erb"))
+  if File.exist?((file = "config/deploy/#{fetch(:full_app_name)}/#{name}.erb"))
+    return file
+  elsif File.exist?((file = "config/deploy/shared/#{name}.erb"))
     return file
   end
   return nil
