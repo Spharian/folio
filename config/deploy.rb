@@ -47,5 +47,6 @@ namespace :deploy do
 
   # Reload nginx to it will pick up any modified vhosts from
   # setup_config
+  after :finished, "deploy:symlink:shared"
   after :finished, "deploy:setup_config", "nginx:reload"
 end
