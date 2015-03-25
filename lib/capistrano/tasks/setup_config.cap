@@ -28,6 +28,8 @@ namespace :deploy do
       symlinks.each do |symlink|
         execute "ln -nfs #{shared_path}/config/#{symlink[:source]} #{symlink[:link].gsub("{{full_app_name}}", full_app_name)}"
       end
+
+      execute "ln -nfs #{shared_path}/config/unicorn.rb config/deploy/#{full_app_name}}"
     end
   end
 end
