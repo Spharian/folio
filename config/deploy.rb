@@ -48,4 +48,6 @@ namespace :deploy do
   # Reload nginx to it will pick up any modified vhosts from
   # setup_config
   after :finished, "deploy:setup_config", "nginx:reload"
+
+  after "deploy:publishing", "deploy:restart"
 end
