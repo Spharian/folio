@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  menu priority: 3, label: 'Administrators'
+  menu priority: 3, label: "Administrators"
 
   permit_params :email, :password, :password_confirmation
 
@@ -17,7 +17,7 @@ ActiveAdmin.register AdminUser do
   end
 
   form do |f|
-    f.inputs 'Admin Details' do
+    f.inputs "Admin Details" do
       f.input :email
       f.input :password
       f.input :password_confirmation

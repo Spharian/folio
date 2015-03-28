@@ -2,7 +2,7 @@ ActiveAdmin.register Category do
   menu priority: 2
 
   config.filters = false
-  config.sort_order = 'position_asc'
+  config.sort_order = "position_asc"
 
   permit_params :name, :position
 
@@ -18,7 +18,7 @@ ActiveAdmin.register Category do
   end
 
   form do |f|
-    f.inputs 'Category Details' do
+    f.inputs "Category Details" do
       f.input :name
     end
     f.actions
