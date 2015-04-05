@@ -18,6 +18,7 @@ gem 'activeadmin-sortable'
 gem 'acts_as_list'
 gem 'paperclip', '~> 4.2'
 gem 'puma'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
