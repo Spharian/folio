@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: folio_rails_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: folio_rails_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: folio_rails_production
