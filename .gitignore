@@ -18,4 +18,3 @@
 
 # Ignore db config file
 /config/database.yml
-/config/secrets.yml
