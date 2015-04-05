@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -17,10 +18,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-sortable'
 gem 'acts_as_list'
 gem 'paperclip', '~> 4.2'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
