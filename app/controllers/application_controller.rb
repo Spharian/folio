@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_filter :redirect_heroku_domain
+  before_filter :redirect_heroku_domain
   protect_from_forgery with: :exception
 
   def redirect_heroku_domain
