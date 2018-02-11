@@ -2,11 +2,6 @@
 
 This is the source code of a [little folio](http://www.ketfikevin.com) I made for a friend.
 
-## Requirements
-
-* Ruby 2.2.1
-* Postgresql
-
 ## UP & RUNNING
 
 * `git clone https://github.com/Spharian/laravel-react-router-refetch.git && cd folio`
@@ -19,6 +14,11 @@ This is the source code of a [little folio](http://www.ketfikevin.com) I made fo
 ### Default users
 
 You can create default admin users from editing the `db/seeds.rb` file.
+
+### Requirements
+
+* [Ruby 2.2.1](https://ruby-doc.org/core-2.2.1)
+* [Postgresql](https://www.postgresql.org)
 
 ### Stacks
 
