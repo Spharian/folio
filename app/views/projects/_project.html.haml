@@ -1,6 +1,7 @@
 %li{class: project.category.name.parameterize}
-  %a{href: '#'}
+  = link_to(project, {data: {push: true}}) do
     .project-picture-container
-      .project-picture{style: "background-image: url(#{project.featured_image.url})"}
-      %h3.hover-title= project.title
-      %p.hover-tags= project.description
+      .scale-container{style: scale_style(project)}
+        = home_project_picture(project)
+      %h2.hover-title= project.title
+      %h3.hover-tags= project.category.name

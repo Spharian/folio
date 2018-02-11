@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.text :text
       t.integer :position
       t.references :category, index: true
- 
+
       t.timestamps null: false
     end
   end

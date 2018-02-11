@@ -1,0 +1,27 @@
+.project
+  %ul.project__navigation
+    - %w{prev next}.each do |nav_direction|
+      %li.project__navigation-item
+        = nav_link(@project, nav_direction)
+
+  %section.project__section
+    %h2.project__title= @project.title
+    %h3.project__category= @project.category.name
+
+    = image_tag @project.featured_image.url, alt: @project.title
+
+    - if text_present?(@project.text)
+      .project__text
+        %h4 — Description
+        = @project.text.html_safe
+
+    - if project_has_any_items?(@project.pictures, @project.videos, @project.marmoset_viewers)
+      .project__pictures
+        - @project.pictures.each do |picture|
+          = image_tag picture.image.url, alt: @project.title
+
+        - @project.videos.each do |video|
+          %iframe{src: vimeo_link(video.video_link), allowfullscreen: true}
+
+        - @project.marmoset_viewers.each do |marmoset_viewer|
+          = format_marmoset(marmoset_viewer.iframe_html)

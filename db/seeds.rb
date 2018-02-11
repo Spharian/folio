@@ -1,5 +1,5 @@
 AdminUser.create!(
-  email: 's.fertons@gmail.com',
-  password: 'password',
-  password_confirmation: 'password'
+  email: 'bob@example.com',
+  password: 'example',
+  password_confirmation: 'example'
 )

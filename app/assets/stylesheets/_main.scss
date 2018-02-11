@@ -3,13 +3,19 @@
 /**************************************************/
 
 body {
-    color: #545454;
+    color: #898989;
     font-family: "Droid Sans", sans-serif;
     font-size: 14px;
     line-height: 1.5;
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+
+    // Sticky footer
+    min-height: 100vh;
+    @include display(flex);
+    @include flex-direction(column);
 }
 
 .container {
@@ -18,4 +24,38 @@ body {
 
 #content {
     padding-top: $headerHeight;
+
+    // Sticky footer
+    @include flex(1);
+}
+
+@include selection {
+    background: #636363;
+    color: #fff;
+}
+
+.special-link {
+    color: #767676;
+    position: relative;
+    @include transition(color .2s ease-in-out);
+
+    // Underline
+    &:after {
+        content: "";
+        background: #e2e2e2;
+        height: 2px;
+        @include hidden;
+        @include position(absolute, null 0 -5px 0);
+        @include transform(scaleY(0) translateY(2px));
+        @include transition(all .2s ease-in-out);
+    }
+
+    &:hover {
+        color: #343434;
+
+        &:after {
+            @include visible;
+            @include transform(none);
+        }
+    }
 }

@@ -11,10 +11,12 @@ $headerHeight: 72px;
 @import "main";
 @import "header";
 @import "projects-filter";
+@import "footer";
 
 
 // Pages
 @import "pages/home";
+@import "pages/project";
 
 
 // Responsive

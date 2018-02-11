@@ -4,6 +4,7 @@
 
 #header {
     background: #fff;
+    border-bottom: 1px solid #f0f1f2;
     position: fixed;
     width: 100%;
     height: $headerHeight;
@@ -25,7 +26,8 @@
         width: 4px;
         height: 4px;
         margin: 2px;
-        @include transition(background .13s ease-in-out);
+        will-change: transform, opacity;
+        @include transition(all .15s linear);
 
         &:nth-child(4),
         &:nth-child(7) {
@@ -34,6 +36,27 @@
 
         .opened-filter & {
             background: #000;
+        }
+
+        .inner-page & {
+            &:first-child,
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(7),
+            &:nth-child(8) {
+                opacity: 0;
+            }
+
+            &:first-child,
+            &:nth-child(2),
+            &:nth-child(3) {
+                @include transform(translateY(-2px));
+            }
+
+            &:nth-child(7),
+            &:nth-child(8) {
+                @include transform(translateY(2px));
+            }
         }
     }
 }
@@ -65,31 +88,15 @@
         }
 
         a {
-            color: #767676;
             font-size: 12px;
-            position: relative;
-            @include transition(color .2s ease-in-out);
-
-            // Underline
-            &:after {
-                content: "";
-                background: #e2e2e2;
-                height: 2px;
-                @include hidden;
-                @include position(absolute, null 0 -5px 0);
-                @include transform(scaleY(0) translateY(2px));
-                @include transition(all .2s ease-in-out);
-            }
 
             &:hover {
-                color: #343434;
-
                 &:after {
                     @include visible;
                     @include transform(none);
                 }
             }
-        } 
+        }
     }
 }
 

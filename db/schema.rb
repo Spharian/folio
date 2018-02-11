@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314165938) do
+ActiveRecord::Schema.define(version: 20150624064224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,27 @@ ActiveRecord::Schema.define(version: 20150314165938) do
     t.integer "position"
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "marmoset_viewers", force: :cascade do |t|
+    t.integer "project_id"
+    t.text    "iframe_html"
+    t.integer "position"
+  end
+
+  add_index "marmoset_viewers", ["project_id"], name: "index_marmoset_viewers_on_project_id", using: :btree
+
   create_table "pictures", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "position"
@@ -56,14 +77,34 @@ ActiveRecord::Schema.define(version: 20150314165938) do
     t.text     "text"
     t.integer  "position"
     t.integer  "category_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "featured_image_file_name"
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
     t.datetime "featured_image_updated_at"
+    t.string   "slug"
+    t.integer  "featured_image_x",            default: 0,   null: false
+    t.integer  "featured_image_y",            default: 0,   null: false
+    t.float    "featured_image_scale",        default: 1.0
   end
 
   add_index "projects", ["category_id"], name: "index_projects_on_category_id", using: :btree
+  add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "cv_file_name"
+    t.string   "cv_content_type"
+    t.integer  "cv_file_size"
+    t.datetime "cv_updated_at"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "project_id"
+    t.string  "video_link"
+    t.integer "position"
+  end
+
+  add_index "videos", ["project_id"], name: "index_videos_on_project_id", using: :btree
 
 end

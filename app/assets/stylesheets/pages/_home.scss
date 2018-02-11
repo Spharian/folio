@@ -11,6 +11,7 @@
     @include transition(all .2s $ease-out-quad);
 
     li {
+        float: left;
         width: 25%;
     }
 
@@ -51,11 +52,15 @@
     @include flex-direction(column);
 }
 
+.scale-container,
+.project-picture {
+    @include position(absolute, 0);
+}
+
 .project-picture {
     background-repeat: no-repeat;
     background-size: cover;
-    @include position(absolute, 0);
-    @include transition(all .3s $ease-out-quad);
+    @include transition(transform .3s $ease-out-quad);
 
     // Overlay
     &:before {
@@ -68,6 +73,12 @@
 }
 
 .hover-title,
+.hover-title:after,
+.hover-tags {
+    @include transition(all .2s ease-in-out);
+}
+
+.hover-title,
 .hover-tags {
     @include hidden;
 }
@@ -76,7 +87,6 @@
     font-size: 17px;
     margin-bottom: 24px;
     position: relative;
-    @include transition(all .2s ease-in-out);
     @include transform(translate3d(0,10px,0));
 
     // Separation line
@@ -87,7 +97,6 @@
         height: 1px;
         margin-left: -15px;
         @include transform(scaleX(0));
-        @include transition(all .2s ease-in-out);
         @include position(absolute, null null -11px 50%);
     }
 }
@@ -95,7 +104,5 @@
 .hover-tags {
     color: #d2d2d0;
     font-size: 11px;
-    position: relative;
-    @include transition(all .2s ease-in-out);
     @include transform(translate3d(0,4px,0));
 }

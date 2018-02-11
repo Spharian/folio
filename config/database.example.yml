@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: folio_rails_development
+  database: folio_development
 
 test:
   <<: *default
-  database: folio_rails_test
+  database: folio_test
 
 production:
   <<: *default
-  database: folio_rails_production
+  database: folio_production

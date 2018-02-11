@@ -1,3 +1,11 @@
+.filter.container
+  %ul.filter-list
+    %li
+      %a.selected{href: '#', 'data-filter': '*'} All
+    - @categories.each do |category|
+      %li
+        %a{href: '#', 'data-filter': '.' + category.name.parameterize}= category.name
+
 - if @projects.any?
   %ul.projects-list
     = render @projects
