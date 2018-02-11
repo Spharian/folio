@@ -7,7 +7,7 @@ This is the source code of a [little folio](http://www.ketfikevin.com) I made fo
 * `git clone https://github.com/Spharian/laravel-react-router-refetch.git && cd folio`
 * `cp config/database.example.yml config/database.yml`
 * `bundle install`
-* `rake db:setup`
+* `bundle exec rake db:setup`
 * `rails s`
 * Open your browser to `http://localhost:3000`
 
