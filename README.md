@@ -1,10 +1,10 @@
 # Folio
 
-This is the source code of a [little folio](http://www.ketfikevin.com) I made for a friend.
+This is the source code of a [little folio](https://ketfikevin.herokuapp.com) I made for a friend.
 
 ## UP & RUNNING
 
-* `git clone https://github.com/Spharian/laravel-react-router-refetch.git && cd folio`
+* `git clone git@github.com:Spharian/folio.git && cd folio`
 * `cp config/database.example.yml config/database.yml`
 * `bundle install`
 * `bundle exec rake db:setup`
